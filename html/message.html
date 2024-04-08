@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>在线留言页</title>
+  <style>
+    .message {
+      display: flex;
+      margin-bottom: 20px;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+    }
+
+    .content {
+      margin-left: 10px;
+    }
+
+    .name {
+      font-weight: bold;
+    }
+
+    .time {
+      font-size: 0.8em;
+      color: #888;
+    }
+
+    /* 分页样式 */
+    .pagination {
+      text-align: center;
+      /* 其他分页样式 */
+    }
+  </style>
+</head>
+<body>
+  <h1>在线留言页</h1>
+
+  <!-- 留言表单 -->
+  <form id="messageForm">
+    <label for="name">姓名:</label>
+    <input type="text" id="name" name="name">
+    
+    <label for="email">邮箱:</label>
+    <input type="email" id="email" name="email">
+
+    <label for="message">留言:</label>
+    <textarea id="message" name="message"></textarea>
+
+    <button type="submit">提交</button>
+  </form>
+
+
+ <!-- 留言展示区域 -->
+  <div id="messagesList">
+    <div class="message">
+      <img src="images/avatar1.png" class="avatar">
+      <div class="content">
+        <p class="name">张三</p>
+        <p class="text">这个网站非常有用,我很喜欢。界面简洁大方,功能也很人性化。继续保持!</p>
+        <p class="time">2023-02-28 14:23</p>
+      </div>
+    </div>
+
+    <div class="message">
+      <img src="images/avatar2.png" class="avatar">
+      <div class="content">
+        <!-- 其他留言 -->
+      </div>
+    </div>
+
+    <!-- 分页 -->
+    <div class="pagination">
+      <a href="">&laquo;</a>
+      <a href="">1</a>
+      <a href="">2</a>
+      <a href="">3</a>
+      <a href="">&raquo;</a>
+    </div>
+  </div>
+<script>
+// 获取表单和留言容器
+const form = document.getElementById('messageForm');
+const msgList = document.getElementById('messageList');
+
+// 提交处理
+form.addEventListener('submit', e => {
+
+  // 阻止默认提交
+  e.preventDefault();
+  
+  // 获取表单数据
+  const formData = new FormData(form);
+  const name = formData.get('name');
+  const email = formData.get('email');
+  const message = formData.get('message');
+
+  // AJAX提交
+  $.ajax({
+    url: "message_board\submit.php",
+    method: 'POST',
+    data: {name, email, message},
+  })
+  .done(res => {
+    // 插入新留言
+    msgList.insertAdjacentHTML("afterbegin", `
+      <div class="message">
+        <p>${name}</p>
+        <p>${message}</p>
+      </div>
+    `);
+  });
+
+});
+</script>
+
+</body>
+</html>
+

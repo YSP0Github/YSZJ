@@ -177,19 +177,31 @@
     margin-right: 10%;
 }
 
+
+
 .top>.menue{
     width:100%;
     height:80px;
     background:#000;
     box-shadow:0 1px 2px  #333;
     position:fixed;
-    top: 0;
-    left: 0;
+
 }
 .top>.menue>.box{
     width:90%; 
     height:100%; 
     margin: auto;
+}
+
+.top>.menue>.moon{
+    float:right;
+    width: auto;
+    height: 51%;
+    position: absolute;
+    top: 20%;
+    right: 1.5%;
+    background-attachment:fixed;
+    animation: moon_rotation 20s linear infinite;
 }
 
 .ul_menue{
@@ -220,7 +232,7 @@
 }
 
 .ul_menue a{ text-decoration: none; color: #fff; }
-.ul_menue a:hover{color: darkgrey;}
+.ul_menue a:hover{color: #cc6600;}
 .yskylogo{
     float: left;
     width: 200px;
@@ -240,11 +252,22 @@
     cursor:pointer;
 }
 
+.moon{
+    float:right;
+    width: 3%;
+    height: auto;
+    position: absolute;
+    top: 10%;
+    right: 25px;
+    background-attachment:fixed;
+    animation: moon_rotation 50s linear infinite;
+
+}
 
 .box1{
     float: left;
-    width: 100%;
-    height: 500px;
+    width: 60%;
+    height: 900px;
     font-style: normal;
     /* position: absolute; */
     /* background: url(images/bg1.png) center; */
@@ -258,7 +281,7 @@
 .box2{
     float: left;
     width: 100%;
-    height: 90%;
+    height: 900px;
     position:relative;
     top: 10%;
     /* background: rgba(254, 254, 254, 0.9); */
@@ -285,13 +308,15 @@
 
 .wrap{
     margin: 0 0;
-    width:60%;
-    max-width: 60%;
+    width:100%;
+    /* max-width: 60%; */
     margin-top: 10px;
+    position: relative;
+
 }
 .tile{
     width: 45%;
-    height: 45%;
+    height: 30%;
     margin:10px;
     background-color: #333;
     display: inline-block;
@@ -303,7 +328,7 @@
     overflow: hidden;
     color: white;
     left: 30px;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 .tile .text{
     z-index: 99;
@@ -401,17 +426,6 @@
     transform: translateY(0px);
 }
 
-.moon{
-    float:right;
-    width: 30%;
-    height: auto;
-    position: absolute;
-    top: 180px;
-    right: 50px;
-    background-attachment:fixed;
-    animation: moon_rotation 200s linear infinite;
-
-}
 
 
 
@@ -453,5 +467,6 @@
 body{
     overflow: auto;
     background-color: #000;
-    margin: 0; }
+    margin: 0; 
+}
 
